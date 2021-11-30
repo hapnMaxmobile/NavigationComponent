@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.navigationcomponent.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {
     private val mBinding by lazy {
         FragmentSecondBinding.inflate(layoutInflater)
     }
+    private val args: SecondFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,14 +25,12 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bundle = arguments
-        val userName = bundle?.let {
-            it.getSerializable("user") as User
-        }
-        if (userName != null) {
-            mBinding.txtName.text = userName.userName
-            mBinding.txtName.text = userName.age.toString()
-        }
+//        val userName = arguments?.getSerializable("user") as User?
+        val user = args.user
+
+        mBinding.txtName.text = user.userName
+        mBinding.txtAge.text = user.age.toString()
+
         val controller = findNavController()
         mBinding.btnOpenFragment3.setOnClickListener {
             //id destination

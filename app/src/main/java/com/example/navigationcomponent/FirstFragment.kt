@@ -34,8 +34,9 @@ class FirstFragment : Fragment() {
             ) {
                 val user =
                     User(mBinding.edtName.text.toString(), mBinding.edtAge.text.toString().toInt())
-                val bundle = bundleOf("user" to user)
-                controller.navigate(R.id.secondFragment, bundle)
+                val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment2(user)
+//                val bundle = bundleOf("user" to user)
+                controller.navigate(action)
             }
 //            controller.navigate(R.id.secondFragment)
         }

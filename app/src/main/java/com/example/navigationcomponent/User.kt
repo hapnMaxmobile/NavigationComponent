@@ -2,4 +2,4 @@ package com.example.navigationcomponent
 
 import java.io.Serializable
 
-data class User(var userName: String, var age: Int) : Serializable
+data class User(val userName: String, val age: Int) : Serializable
