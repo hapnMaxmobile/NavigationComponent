@@ -26,10 +26,13 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 //        val userName = arguments?.getSerializable("user") as User?
-        val user = args.user
+        try {
+            val user = args.user
+            mBinding.txtName.text = user.userName
+            mBinding.txtAge.text = user.age.toString()
+        } catch (e: Exception) {
 
-        mBinding.txtName.text = user.userName
-        mBinding.txtAge.text = user.age.toString()
+        }
 
         val controller = findNavController()
         mBinding.btnOpenFragment3.setOnClickListener {
